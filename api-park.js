@@ -24,7 +24,7 @@ function pridani(pozadavek, odpoved) {
     console.log(parametry);
     let obj = {};
     obj.id = uniqid();
-    obj.rz_spz = parametry.rz_spz;
+    obj.spz = parametry.spz;
     obj.znacka = parametry.znacka;
     obj.model = parametry.model;
     obj.palivo = parametry.palivo;
@@ -72,7 +72,7 @@ function aktualizace(pozadavek, odpoved) {
     console.log(parametry);
     for (let i = 0; i < seznamVozidel.length; i++) {
       if (seznamVozidel[i].id == parametry.id) {
-        seznamVozidel[i].rz_spz = parametry.rz_spz;
+        seznamVozidel[i].spz = parametry.spz;
         seznamVozidel[i].znacka = parametry.znacka;
         seznamVozidel[i].model = parametry.model;
         seznamVozidel[i].palivo = parametry.palivo;

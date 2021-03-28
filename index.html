@@ -1,28 +1,56 @@
 <html>
-<head> 
-  <meta charset='UTF-8'> 
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="script.js"></script>   
-</head>  
-<body onload="poNacteni()">
-	Moje stranecka v <b>Node.js</b>.
-  <br><br>
-  
-  <input type="number" id="cislo1">
-  +
-  <input type="number" id="cislo2">
-  <input type="button" value="=" onclick="vypocet()">
-  <b id="vysledek">...</b>
-  
-  <br><br>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Registrace do vozového parku</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+  </head>
+  <body onload="poNacteni()">
+    <center><h1>Registrace do vozového parku</h1></center>
 
-  Rodné číslo:
-  <input type="text" id="rodnecislo">
-  <input type="button" value="Zkontroluj" onclick="zkontrolujRC()">
-  <b id="vysledekRC">...</b>
-  <br><br>
+    <div id="div_editace">
+      <h2>Žadatel</h2>
+    <table>
+      <tr><td>RZ/SPZ:</td> <td><input type="text" id="spz"></td></tr>
+      <tr><td>Značka:</td> <td><input type="text" id="znacka"></td></tr>
+      <tr><td>Model:</td> <td><input type="text" id="model"></td></tr>
+      <tr><td>Palivo:</td> <td> 
+        <select id="palivo">
+          <option value="benzin">Benzin</option>
+          <option value="nafta">Nafta</option>
+          <option value="plyn">Plyn</option>
+          <option value="elektrina">Elektřina</option>
+        </select></td></tr>
+      <tr><td>Počet míst:</td> <td> 
+        <select id="misto">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select></td></tr>
+    </table>
+      <input type="button" value="Uložit" onclick="ulozZadatele()">
+      <input type="button" value="Storno" onclick="ukazOblast('div_seznam')"><br>
+    </div>
 
-  <img src="obrazky/mimon.png" height="100">
-  <img src="obrazky/marvin.png" height="100">
-</body>
+  <div id="div_seznam">
+      <h2>Vozidla</h2>
+     <table>
+        <thead>
+          <th>RZ/SPZ</th>
+          <th>Výrobce</th>
+          <th>Model</th>
+          <th>Palivo</th>
+          <th>Počet míst</th>
+          <th> </th>
+        </thead>
+        <tbody id="tbody_seznam_zadatelu"></tbody>
+      </table>
+
+       <button onclick="pridejZadatele()"><span class="glyphicon glyphicon-plus-sign"></span> Přidat</button>
+    </div>
+   
+  </body>
 </html>
