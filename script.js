@@ -6,7 +6,7 @@ async function nactiSeznamZadatelu() {
   let data = await response.json();
   let s = "";
   for (let item of data) {
-    s += `<tr><td>${item.spz}</td> <td>${item.znacka}</td> <td>${item.model}</td> <td>${item.palivo}</td> <td>${item.misto}</td> <td><button value="Upravit" onclick="upravZadatele(${item.id})"><span class="		glyphicon glyphicon-edit
+    s += `<tr><td>${item.spz}</td> <td>${item.znacka}</td> <td>${item.model}</td> <td>${item.palivo}</td> <td>${item.mista}</td> <td><button value="Upravit" onclick="upravZadatele(${item.id})"><span class="		glyphicon glyphicon-edit
     "></span><button value="Odstranit" onclick="odstranZadatele(${item.id})"><span class="	glyphicon glyphicon-remove-circle"></span></button></td></tr>`; 
       }
       
@@ -17,21 +17,21 @@ async function nactiSeznamZadatelu() {
 let idEditace;
 
 async function ulozZadatele() {
-  let vyr = document.getElementById("spz").value;
-  let mod = document.getElementById("znacka").value;
-  let pal = document.getElementById("model").value;
-  let spz = document.getElementById("palivo").value;
-  let m = document.getElementById("misto").value;
+  let spz = document.getElementById("spz").value;
+  let znacka = document.getElementById("znacka").value;
+  let model = document.getElementById("model").value;
+  let palivo = document.getElementById("palivo").value;
+  let mista = document.getElementById("mista").value;
   
   let url = URL_CRUD + "pridani";
   let body = {};
-  body.obj = {};
-  body.obj.vyrobce = vyr;
-  body.obj.model = mod;
-  body.obj.palivo = pal;
-  body.obj.spz = spz;
-  body.obj.misto = m;
-  body.obj.fotka = fotkaUrl;
+  body = {};
+  body.spz = spz;
+  body.znacka = znacka;
+  body.model = model;
+  body.palivo = palivo;
+  body.mista = mista;
+  body.fotka = fotkaUrl;
   if (idEditace) { //=false pro undefined, =true pro jakoukoliv nastavenou hodnotu
     url = URL_CRUD + "aktualizace";
     body.id = idEditace;
@@ -50,7 +50,7 @@ function pridejZadatele() {
   document.getElementById("znacka").value = "";
   document.getElementById("model").value = "";
   document.getElementById("palivo").value = "";
-  document.getElementById("misto").value = "";
+  document.getElementById("mista").value = "";
   document.getElementById("fotka").src = "avatarr.png";
 
   ukazOblast("div_editace");
@@ -64,12 +64,12 @@ async function upravZadatele(id) {
   let response = await fetch(url, {method: "POST", body: JSON.stringify(body)});
   let data = await response.json();
   let item = data.items[0];
-  document.getElementById("spz").value = item.obj.spz;
-  document.getElementById("znacka").value = item.obj.znacka;
-  document.getElementById("model").value = item.obj.model;
-  document.getElementById("palivo").value = item.obj.palivo;
-  document.getElementById("misto").value = item.obj.misto;
-  document.getElementById("fotka").src = item.obj.fotka;
+  document.getElementById("spz").value = item.spz;
+  document.getElementById("znacka").value = item.znacka;
+  document.getElementById("model").value = item.model;
+  document.getElementById("palivo").value = item.palivo;
+  document.getElementById("mista").value = item.mista;
+  document.getElementById("fotka").src = item.fotka;
 
   ukazOblast("div_editace");
 }

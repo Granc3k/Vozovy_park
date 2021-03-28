@@ -28,7 +28,7 @@ function pridani(pozadavek, odpoved) {
     obj.znacka = parametry.znacka;
     obj.model = parametry.model;
     obj.palivo = parametry.palivo;
-    obj.v_mista = parametry.v_mista;
+    obj.mista = parametry.mista;
     seznamVozidel.push(obj);
     fs.writeFileSync(SOUBOR_S_DATY, JSON.stringify(seznamVozidel, null, 4));
 
@@ -76,7 +76,7 @@ function aktualizace(pozadavek, odpoved) {
         seznamVozidel[i].znacka = parametry.znacka;
         seznamVozidel[i].model = parametry.model;
         seznamVozidel[i].palivo = parametry.palivo;
-        seznamVozidel[i].v_mista = parametry.v_mista;
+        seznamVozidel[i].mista = parametry.mista;
         seznamVozidel[i].upraveno = true;
         fs.writeFileSync(SOUBOR_S_DATY, JSON.stringify(seznamVozidel, null, 4));
         break;
