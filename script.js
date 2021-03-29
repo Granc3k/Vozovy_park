@@ -6,12 +6,11 @@ async function nactiSeznamZadatelu() {
   let data = await response.json();
   let s = "";
   for (let item of data) {
-    s += `<tr><td>${item.spz}</td> <td>${item.znacka}</td> <td>${item.model}</td> <td>${item.palivo}</td> <td>${item.mista}</td> <td><button value="Upravit" onclick="upravZadatele(${item.id})"><span class="		glyphicon glyphicon-edit
-    "></span><button value="Odstranit" onclick="odstranZadatele(${item.id})"><span class="	glyphicon glyphicon-remove-circle"></span></button></td></tr>`; 
+    s += `<tr><td>${item.spz}</td> <td>${item.znacka}</td> <td>${item.model}</td> <td>${item.palivo}</td> <td>${item.mista}</td> <td><button value="Upravit" onclick="upravZadatele('${item.id}')"><span class="		glyphicon glyphicon-edit
+    "></span><button value="Odstranit" onclick="odstranZadatele('${item.id}')"><span class="	glyphicon glyphicon-remove-circle"></span></button></td></tr>`; 
       }
-      
       document.getElementById("tbody_seznam_zadatelu").innerHTML = s;
-      
+
 }  
 
 let idEditace;
@@ -57,8 +56,9 @@ function pridejZadatele() {
 }
 
 async function upravZadatele(id) {
+  ukazOblast("div_editace")
   idEditace = id;
-  let url = URL_CRUD + "aktualizace";
+  let url = URL_CRUD + "detail";
   let body = {};
   body.id = id;
   let response = await fetch(url, {method: "POST", body: JSON.stringify(body)});
@@ -76,9 +76,9 @@ async function upravZadatele(id) {
 
 async function odstranZadatele(id) {
   if (!confirm("Opravdu odstranit?")) return;
-
+  
   idEditace = id;
-  let url = URL_CRUD + "detail";
+  let url = URL_CRUD + "odstraneni";
   let body = {};
   body.id = id;
   let response = await fetch(url, {method: "POST", body: JSON.stringify(body)});
