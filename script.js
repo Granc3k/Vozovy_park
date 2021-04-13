@@ -62,8 +62,7 @@ async function upravZadatele(id) {
   let body = {};
   body.id = id;
   let response = await fetch(url, {method: "POST", body: JSON.stringify(body)});
-  let data = await response.json();
-  let item = data.items[0];
+  let item = await response.json();
   document.getElementById("spz").value = item.spz;
   document.getElementById("znacka").value = item.znacka;
   document.getElementById("model").value = item.model;
