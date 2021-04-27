@@ -3,7 +3,7 @@ const fs = require("fs");
 const url = require("url");
 const path = require("path");
 
-const zpracovaniPark = require("./api-park.js").zpracovaniPark;
+const zpracovaniPark = require("./api-park-mysql.js").zpracovaniPark;
 
 function zpracovaniPozadavku(pozadavek, odpoved) {
   console.log(pozadavek.url);
